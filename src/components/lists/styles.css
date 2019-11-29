@@ -1,0 +1,67 @@
+.favorite_add {
+  margin: 25px;
+}
+
+.empty {
+  width: 8vw;
+  height: 120px;
+  background-color: brown;
+}
+
+.favorite-form {
+  background-color: white;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  min-width: 100%;
+  height: 15vh;
+  overflow-x: auto;
+  border: 2px dashed rgb(105, 37, 107);
+  
+}
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.movie_box {
+  width: 8vw;
+  height: 120px;
+  margin-left: .75vw;
+  margin-right: .75vw;
+  position: relative;
+  display: inline-block;
+}
+
+.movie_box .poster {
+  display: block;
+  z-index: 50;
+}
+
+.movie_box .remove {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  z-index: 100;
+
+  visibility: hidden;
+}
+
+.movie_box:hover .remove {
+  visibility: visible;
+}
+
+.favSelector {
+  display: flex;
+  flex-direction: row;
+}
+
+/* IPHONE STYLES */
+@media only screen and (max-width: 767px) {
+  .list {
+    -webkit-overflow-scrolling: touch;
+  }
+}
