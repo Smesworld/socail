@@ -7,7 +7,7 @@ export default function Suggested(props) {
   const [suggested, setSuggested] = useState("hide")
 
   const newMovie = () => {
-    axios.post(`http://lhl-social-api.herokuapp.com/suggestion`, { userGenrePreferences: props.userGenres, group: props.group, recentSuggestions: props.recentSuggestions, minimumRuntime: props.minimumRuntime, maximumRuntime: props.maximumRuntime })
+    axios.post(`suggestion`, { userGenrePreferences: props.userGenres, group: props.group, recentSuggestions: props.recentSuggestions, minimumRuntime: props.minimumRuntime, maximumRuntime: props.maximumRuntime })
       .then(response => {
         setSuggestedMovie({
           "title": response.data.title,
@@ -23,7 +23,7 @@ export default function Suggested(props) {
   }
 
   const saveToLaterList = (userName, suggestedMovie) => {
-    axios.post(`http://lhl-social-api.herokuapp.com/api/${userName}/latermovies`, { suggestedMovie })
+    axios.post(`api/${userName}/latermovies`, { suggestedMovie })
     .then(response => {
       props.setLaterMovies(response.data.later_movies)
     })

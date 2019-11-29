@@ -9,7 +9,7 @@ export default function Genres(props) {
   const [genres, setGenres] = useState([])
 
   useEffect(()=> {
-    axios.get("http://lhl-social-api.herokuapp.com/api/genres")
+    axios.get("api/genres")
     .then(response => {
       setGenres(response.data);
     })

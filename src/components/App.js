@@ -76,7 +76,7 @@ function App() {
   }
 
   const createUser = (name, password) => {
-    return axios.post(`http://lhl-social-api.herokuapp.com/signup`, { name, password, genres: userGenres })
+    return axios.post(`signup`, { name, password, genres: userGenres })
     .then(response => {
       console.log("WEE RES!", response)
 
@@ -85,7 +85,7 @@ function App() {
   }
 
   const getUser = (name, password) => {
-    return axios.post("http://lhl-social-api.herokuapp.com/login", { name, password })
+    return axios.post("login", { name, password })
       .then(response => {
         setUser(response.data.user);
         setGenres(response.data.genres);
@@ -96,7 +96,7 @@ function App() {
 
   const setGenre = (id, value) => {
     if (state.user && state.user.name !== "") {
-      axios.post(`http://lhl-social-api.herokuapp.com/api/${state.user.name}/genres`, { id, preference: value })
+      axios.post(`api/${state.user.name}/genres`, { id, preference: value })
         .then(response => {
           setGenres(response.data.genres)
         })
