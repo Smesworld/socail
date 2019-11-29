@@ -10,7 +10,7 @@ export default function FavoriteForm(props) {
 
 
   const saveToFavoriteList = (userName, movie) => {
-    axios.post(`http://localhost:5000/api/${userName}/favmovies`, { movie })
+    axios.post(`http://lhl-social-api.herokuapp.com/api/${userName}/favmovies`, { movie })
     .then(response => {
       props.setFavoriteMovies(response.data.favorited_movies)
     })
@@ -20,7 +20,7 @@ export default function FavoriteForm(props) {
     event.preventDefault();
     const queryStringTitle = title.trim().split(" ").join("%20"); 
   
-    axios.get(`http://localhost:5000/movies/title/?title=${queryStringTitle}`)
+    axios.get(`http://lhl-social-api.herokuapp.com/movies/title/?title=${queryStringTitle}`)
     .then(response => {
       setSearchedMovie(response.data.movies)
     })

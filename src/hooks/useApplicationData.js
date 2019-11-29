@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const initGenres = () => {
   let genres = []
-  return axios.get("http://localhost:5000/api/genres")
+  return axios.get("http://lhl-social-api.herokuapp.com/api/genres")
   .then(response => {
     genres = response.data.map(genre => {
       return genre = {
@@ -37,8 +37,8 @@ export default function useApplicationData() {
   useEffect(() => {
     if (state.user !== "") {
       Promise.all([
-        axios.get(`http://localhost:5000/api/${state.user.name}/genres`),
-        axios.get("http://localhost:5000/api/users")
+        axios.get(`http://lhl-social-api.herokuapp.com/api/${state.user.name}/genres`),
+        axios.get("http://lhl-social-api.herokuapp.com/api/users")
       ])
       .then((all) => {
         setGenres(all[0].data.genres)
@@ -70,7 +70,7 @@ export default function useApplicationData() {
 
   const removeLaterMovie = id => {
     console.log(id);
-    axios.delete(`http://localhost:5000/api/${state.user.name}/latermovies`, { data: { "id": id } })
+    axios.delete(`http://lhl-social-api.herokuapp.com/api/${state.user.name}/latermovies`, { data: { "id": id } })
     .then(response => {
       console.log("THIS", response.data)
       setLaterMovies(response.data.later_movies)
@@ -84,7 +84,7 @@ export default function useApplicationData() {
 
   const removeFavoritedMovie = id => {
     console.log(id);
-    axios.delete(`http://localhost:5000/api/${state.user.name}/favmovies`, { data: { "id": id } })
+    axios.delete(`http://lhl-social-api.herokuapp.com/api/${state.user.name}/favmovies`, { data: { "id": id } })
     .then(response => {
       console.log("THIS", response.data)
       setFavoriteMovies(response.data.favorited_movies)
