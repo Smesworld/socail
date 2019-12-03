@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
-import '../styles/genre.css';
+// import './App.css';
+import '../styles/genre.scss';
 
 import Genre from "./Genre";
 import axios from "axios";
@@ -9,10 +9,11 @@ export default function Genres(props) {
   const [genres, setGenres] = useState([])
 
   useEffect(()=> {
-    axios.get("api/genres")
+    axios.get("/api/genres")
     .then(response => {
       setGenres(response.data);
     })
+    .catch(error => {console.log(error)})
   },[]);
 
   const lovedGenres = [];
@@ -43,10 +44,12 @@ export default function Genres(props) {
   }
 
   return (
-    <div>
+    <>
+      {props.themeNight? <h4>Group Theme Night Preferences</h4> : <h4>My Preferences</h4>}
       <section className="genres">
         {genreOptions}
+        <button className="reset" onClick={x => props.resetGenres()}>Reset<br/>Preferences</button>
       </section>
-    </div>
+    </>
   );
 }

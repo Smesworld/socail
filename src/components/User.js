@@ -1,12 +1,30 @@
 import React from "react";
+import Popup from "reactjs-popup";
+import FriendInfo from '././FriendInfo'
 
-//this one shows up when there is no favorite. It's just an add symbol.
 export default function User(props) {
+  const contentStyle = {
+    // maxWidth: "300px",
+    // height: "200px",
+    borderRadius: "20px"
+  };
 
   return (
-    <div className="user">
-      <h1>{props.user.name}</h1>
-      <button type="button" onClick={props.logout}>Logout</button>
-    </div>
+    <section className="user-login">
+      <Popup className="popup" trigger=
+      {
+        <h4>{props.user.name}</h4>
+      }
+      modal
+      contentStyle={contentStyle}
+      >
+        {close =>   <FriendInfo friend={props.user.name} close={close}/>}
+      </Popup>
+      <button className="list-name" onClick={props.logout}>Logout</button>
+    </section>
+
+
+
+
   );
 }

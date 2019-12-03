@@ -14,7 +14,10 @@ export default function Signup(props) {
   }
 
   return (
-    <main className="">
+    <main className="userForm">
+      <span className="close-modal" onClick={props.close}>
+        &times;
+      </span>
       <div>{error}</div>
       <form onSubmit={signup}>
         <label>

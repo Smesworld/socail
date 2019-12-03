@@ -8,7 +8,7 @@ export default function Signup(props) {
   
   const signup = (event) => {
     event.preventDefault();
-    if (password != "" && password === passwordConf) {
+    if (password !== "" && password === passwordConf) {
       props.createUser(name, password)
       .catch(() => {
         setError("Username already exists.")
@@ -19,7 +19,10 @@ export default function Signup(props) {
   }
 
   return (
-    <main className="">
+    <main className="userForm">
+      <span className="close-modal" onClick={props.close}>
+        &times;
+      </span>
       <div>{error}</div>
       <form onSubmit={signup}>
         <label>

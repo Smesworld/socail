@@ -4,8 +4,8 @@ import Popup from "reactjs-popup";
 import FavoriteForm from './FavoriteForm'
 
 const contentStyle = {
-  width: "300px",
-  height: "300px",
+  // width: "300px",
+  // height: "300px",
   borderRadius: "20px"
 };
 
@@ -16,14 +16,15 @@ export default function AddFav(props) {
       <Popup trigger=
         {
           <img
-            src="images/add.png"
+            src="images/plus.png"
+            height="55px"
             alt="Add" 
           />
         } modal
         contentStyle={contentStyle}>
-        <FavoriteForm user={props.user} setFavoriteMovies={props.setFavoriteMovies}/>
+       {close =>   <FavoriteForm user={props.user} setFavoriteMovies={props.setFavoriteMovies} close={close}/>}
+
       </Popup>
     </main>
   );
 }
-

@@ -1,8 +1,21 @@
 import React from "react";
-import './lists/styles.css'
-import '../styles/genre.css';
+import './lists/styles.scss'
+import '../styles/genre.scss';
+import FriendInfo from '././FriendInfo'
+import Popup from "reactjs-popup";
+
+
+
+const contentStyle = {
+  // maxWidth: "300px",
+  // height: "200px",
+  borderRadius: "20px"
+};
+
+
 
 export default function UserDisplay(props) {
+
   const addOrRemove = function(action) {
     let addEnabled = true;
     //for each object in the group that's passsed in 
@@ -21,18 +34,26 @@ export default function UserDisplay(props) {
         return props.useMovieNight(props.friend, "remove")
       }
     }
-
+  
   return (
-    <div className="friend-card">
+    <section className="friend-card">
        <img className="user-icon" src={props.friend.icon} alt={props.friend.name}/>
        <p className="user-name-text">{props.friend.name}</p>
        {props.action==="add" && 
-      <img className="friend-night" id="add" src="./images/plusfriend.svg" alt="Delete" onClick={()=>addOrRemove("add")}/>
+      <img className="friend-night" id="add" src="./images/blackplus.png" alt="Delete" onClick={()=>addOrRemove("add")}/>
       }
       {props.action ==="remove" &&
-       <img className="friend-night" id="trash" src="./images/trash.png" alt="Delete" onClick={()=>addOrRemove("remove")}/>
+       <img className="friend-night" id="trash" src="./images/trashcan.png" alt="Delete" onClick={()=>addOrRemove("remove")}/>
       }
-      <img className="friend-night" id="eye" src="./images/eye.svg" alt="info" onClick={()=>console.log(props.friend)}/>
-    </div>
+      <Popup className="popup" trigger=
+        {
+          <img className="friend-night" id="eye" src="./images/blackeye.png" alt="info"/>
+        }
+        modal
+        contentStyle={contentStyle}
+        >
+       {close =>   <FriendInfo friend={props.friend.name} close={close}/>}
+      </Popup>
+    </section>
   );
 }

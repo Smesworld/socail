@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import MovieBox from "./MovieBox"
+import "./PickFav.scss"
+import React from "react";
 
 export default function PickFav(props) {
-  const [movie, setMovie] = useState(0)
 
   return (
-    <div>
+    <>
       <main className="favSelector">
-        <div onClick={() => setMovie(prev => prev === 0 ? prev : prev - 1)}>Left</div>
-        <MovieBox img = {props.searchedMovie[movie].poster} title = {props.searchedMovie[movie].title}/>
-        <div onClick={() => setMovie(prev => prev === props.searchedMovie.length - 1 ? prev : prev + 1)}>Right</div>
+        <div className="navButton" onClick={() => props.setMovie(prev => prev === 0 ? prev : prev - 1)}>Left</div>
+        <article>
+          <img src={props.searchedMovie[props.movie].poster} alt={props.searchedMovie[props.movie].title} height='200px'></img>
+          <h5>{props.searchedMovie[props.movie].title}</h5>
+          <h6>{props.searchedMovie[props.movie].release_date}</h6>
+        </article>
+        <div className="navButton" onClick={() => props.setMovie(prev => prev === props.searchedMovie.length - 1 ? prev : prev + 1)}>Right</div>
       </main>
-      <button onClick={()=>{props.saveToFavoriteList(props.user.name, props.searchedMovie[movie])}}>Yes, this one!</button>
-    </div>
+      <button onClick={()=>{props.saveToFavoriteList(props.user.name, props.searchedMovie[props.movie]); props.close()}}>Yes, this one!</button>
+    </>
   );
 }
