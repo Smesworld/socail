@@ -8,13 +8,13 @@
 
 .friend-card{
   background-color: #ffd500;
-  min-height: 12vh;
+  min-height: 14vh;
   max-height: 15vh;
   min-width: 12vh;
   max-width: 12vh;
   margin: 5px;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
   border-radius: 5px;
   border: 2px solid black;
   position: relative;
@@ -56,7 +56,6 @@
 
 .user-name-text{
   margin: 2px;
-  /* overflow-wrap: break-word; */
   overflow: hidden;
   text-overflow: ellipsis
 }
@@ -65,7 +64,7 @@
 /* IPHONE STYLES */
 @media only screen and (max-width: 551px) {
   article.friends-container article section {
-    display:flex;
     flex-direction: row;
   }
+
 }

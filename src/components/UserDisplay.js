@@ -7,8 +7,6 @@ import Popup from "reactjs-popup";
 
 
 const contentStyle = {
-  // maxWidth: "300px",
-  // height: "200px",
   borderRadius: "20px"
 };
 
@@ -47,7 +45,7 @@ export default function UserDisplay(props) {
       }
       <Popup className="popup" trigger=
         {
-          <img className="friend-night" id="eye" src="./images/blackeye.png" alt="info"/>
+          <img className="friend-night" id="eye" src="./images/information.png" alt="info"/>
         }
         modal
         contentStyle={contentStyle}

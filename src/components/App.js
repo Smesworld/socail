@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.scss';
-
 import List from './lists/List.js'
 import Nav from './Nav'
 import { DragDropContext } from 'react-beautiful-dnd'
-
-
 import Suggested from "./Suggested";
 import Genres from "./Genres";
 import FriendList from './FriendList';
 import MovieNightFriends from './MovieNightFriends';
-
 import useApplicationData from "../hooks/useApplicationData";
 import RecentSuggestion from './RecentSuggestion';
-// import RuntimeSelector from './RuntimeSelector';
 
 function App() {
   const { 
@@ -233,7 +228,7 @@ function App() {
         </article>
       }
       {friendList === "show" &&
-        <FriendList name={state.user.name} friends={friends} useMovieNight={useMovieNight} group={group} action="add" classname="list" type="All Friends  - click + on a friend to add them to your movie night"/>
+        <FriendList name={state.user.name} friends={friends} useMovieNight={useMovieNight} group={group} action="add" classname="list" type="All Friends"/>
       }
       <section className="main-container">
         {recentSuggestions.length > 0 ?
